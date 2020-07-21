@@ -44,6 +44,7 @@ include 'funciones/calculadora.php';
 include 'funciones/sensores.php';
 include 'funciones/restaurante.php';
 include 'funciones/menu.php';
+include 'funciones/trabajador.php';
 // Run app
 $app->run();
 

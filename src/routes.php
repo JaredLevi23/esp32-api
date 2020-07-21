@@ -39,4 +39,10 @@ $app->group('/api', function () use ($app) {
     $app->get('/menu','funcionConsultaProducto');
     $app->delete('/menu','funcionIeliminaProducto');
     $app->patch('/menu','funcionmodificarProducto');
+
+    //Funciones Trabajador
+    $app->post('/trabajador','funcionInsertaTrabajador');
+    $app->get('/trabajador','funcionConsultaTrabajador');
+    $app->delete('/trabajador','funcionIeliminaTrabajador');
+    $app->patch('/trabajador','funcionmodificarTrabajador');
 });
