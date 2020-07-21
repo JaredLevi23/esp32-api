@@ -45,6 +45,7 @@ include 'funciones/restaurante.php';
 include 'funciones/menu.php';
 include 'funciones/trabajador.php';
 include 'funciones/reservacion.php';
+include 'funciones/pedidos.php';
 // Run app
 $app->run();
 

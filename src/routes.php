@@ -45,4 +45,10 @@ $app->group('/api', function () use ($app) {
     $app->get('/reservacion','funcionConsultaReservacion');
     $app->delete('/reservacion','funcionIeliminaReservacion');
     $app->patch('/reservacion','funcionmodificarReservacion');
+
+    //Funciones Pedidos
+    $app->post('/pedidos','funcionInsertaPedidos');
+    $app->get('/pedidos','funcionConsultaPedidos');
+    $app->delete('/pedidos','funcionIeliminaPedidos');
+    $app->patch('/pedidos','funcionmodificarPedidos');
 });
