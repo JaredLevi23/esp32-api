@@ -14,37 +14,38 @@ class Restaurante
     $this->con = null;
   }
 
-  public function insertCliente($request)
-  {
-    $req = json_decode($request->getbody());
 
-    $sql = "INSERT INTO Clientes(Nombre,Apellido,Email,Telefono,Direccion) VALUES(:nombre,:apellido,:email,:telefono,:direccion)";
+                                      //*******TABLA CLIENTE**********
+  //funcion parainsertar un cliente nuevo
+  public function insertCliente($request){
+    $req = json_decode($request->getbody());
+    $sql = "INSERT INTO Clientes(Nombre,Apellido,Email,Telefono,Direccion) VALUES(:Nombre,:Apellido,:Email,:Telefono,:Direccion)";
     $response=new stdClass();
       try {
         $statement = $this->con->prepare($sql);
-        $statement->bindparam("Nombre: ", $req->nombre);
-        $statement->bindparam("Apellido: ", $req->apellido);
-        $statement->bindparam("Email: ", $req->email);
-        $statement->bindparam("Telefono: ", $req->telefono);
-        $statement->bindparam("Direccion: ", $req->direccion);
+        $statement->bindparam("Nombre", $req->Nombre);
+        $statement->bindparam("Apellido", $req->Apellido);
+        $statement->bindparam("Email", $req->Email);
+        $statement->bindparam("Telefono", $req->Telefono);
+        $statement->bindparam("Direccion", $req->Direccion);
         $statement->execute();
         $response=$req;
       } catch (Exception $e) {
-        $response->mensaje = $e->getMessage();
+        $response->mensaje2 = $e->getMessage();
       }
 
     return json_encode($response);
   }
-  /*
-  public function getSensorData($request)
+  //Funcion para consultar a un cliente por su id
+  public function getClienteData($request)
   {
     $req = json_decode($request->getbody());
 
-    $sql = "SELECT * FROM ejemplo WHERE id=:id";
+    $sql = "SELECT * FROM Clientes WHERE idCliente=:idCliente";
     $response=new stdClass();
       try {
         $statement = $this->con->prepare($sql);
-        $statement->bindparam("id", $req->id);      
+        $statement->bindparam("idCliente", $req->idCliente);      
         $statement->execute();        
         $response->result=$statement->fetchall(PDO::FETCH_OBJ);
       } catch (Exception $e) {
@@ -53,19 +54,19 @@ class Restaurante
 
     return json_encode($response);
   }
-
-  public function eliminarSensor($request)
+  //Funcion para eliminar a un cliente
+  public function eliminarCliente($request)
   {
     $req = json_decode($request->getbody());
 
-    //$sql = "INSERT INTO ejemplo(sensor,valor) VALUES(:sensor,:valor)";
-      $sql = "DELETE  FROM ejemplo where id=:id";
+   
+      $sql = "DELETE  FROM Clientes where idCliente=:idCliente";
     $response=new stdClass();
       try {
         $statement = $this->con->prepare($sql);
-        $statement->bindparam("id", $req->id); 
+        $statement->bindparam("idCliente", $req->idCliente); 
         $statement->execute();
-        $response=$req;
+        $response->Datos_Eliminados =$req;
       } catch (Exception $e) {
         $response->mensaje = $e->getMessage();
       }
@@ -74,19 +75,21 @@ class Restaurante
 
   }
 
- public function modificarSensor($request)
+   //Funcion para modificar algun cliente
+ public function modificarCliente($request)
   {
     $req = json_decode($request->getbody());
 
-    //$sql = "INSERT INTO ejemplo(sensor,valor) VALUES(:sensor,:valor)";
-     // $sql = "DELETE  FROM ejemplo where id=:id";
-     $sql = "UPDATE ejemplo  SET sensor=:sensor, valor=:valor WHERE id=:id";
+     $sql = "UPDATE Clientes  SET Nombre=:Nombre, Apellido=:Apellido, Email=:Email, Telefono=:Telefono, Direccion=:Direccion WHERE idCliente=:idCliente";
     $response=new stdClass();
       try {
         $statement = $this->con->prepare($sql);
-        $statement->bindparam("id", $req->id);
-        $statement->bindparam("sensor", $req->sensor);
-        $statement->bindparam("valor", $req->valor); 
+        $statement->bindparam("idCliente", $req->idCliente);
+        $statement->bindparam("Nombre", $req->Nombre);
+        $statement->bindparam("Apellido", $req->Apellido);
+        $statement->bindparam("Email", $req->Email);
+        $statement->bindparam("Telefono", $req->Telefono);
+        $statement->bindparam("Direccion", $req->Direccion);
          
         $statement->execute();
         $response=$req;
@@ -96,6 +99,10 @@ class Restaurante
 
     return json_encode($response);
 
-  } */
+  }
   
+  
+  
+
+
 }

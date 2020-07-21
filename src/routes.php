@@ -29,4 +29,7 @@ $app->group('/api', function () use ($app) {
 
     //FuncionesRestaurante
     $app->post('/restaurante','funcionInsertCliente');
+    $app->get('/restaurante','funciongetCliente');
+    $app->delete('/restaurante','funcionEliminarCliente');
+    $app->patch('/restaurante','funcionmodificarCliente');
 });

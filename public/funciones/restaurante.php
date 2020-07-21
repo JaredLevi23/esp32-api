@@ -4,18 +4,21 @@ function funcionInsertCliente($request){
     $objRestaurante= new Restaurante();
     return $objRestaurante->insertCliente($request);
 }
-/*
-function funciongetSensoreData($request){
-    $objSensor= new Sensores();
-    return $objSensor->getSensorData($request);
-}
-function funcionEliminarSensor($request){
-    $objSensor= new Sensores();
-    return $objSensor->eliminarSensor($request);
+
+function funciongetCliente($request){
+    $objRestaurante= new Restaurante();
+    return $objRestaurante->getClienteData($request);
 }
 
-function funcionmodificarSensor($request){
-    $objSensor= new Sensores();
-    return $objSensor->modificarSensor($request);
-} */
+function funcionEliminarCliente($request){
+    $objRestaurante= new Restaurante();
+    return $objRestaurante->eliminarCliente($request);
+}
+
+function funcionmodificarCliente($request){
+    $objRestaurant= new Restaurante();
+    return $objRestaurant->modificarCliente($request);
+} 
+
+
 
