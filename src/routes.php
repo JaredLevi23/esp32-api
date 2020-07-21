@@ -32,4 +32,11 @@ $app->group('/api', function () use ($app) {
     $app->get('/restaurante','funciongetCliente');
     $app->delete('/restaurante','funcionEliminarCliente');
     $app->patch('/restaurante','funcionmodificarCliente');
+
+    
+    //Funciones Menu
+    $app->post('/menu','funcionInsertaProducto');
+    $app->get('/menu','funcionConsultaProducto');
+    $app->delete('/menu','funcionIeliminaProducto');
+    $app->patch('/menu','funcionmodificarProducto');
 });

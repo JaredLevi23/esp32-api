@@ -1,5 +1,5 @@
 <?php
-class Restaurante
+class Menu
 {
   private $con;
 
@@ -15,19 +15,18 @@ class Restaurante
   }
 
 
-                                      //*******TABLA CLIENTE**********
-  //funcion parainsertar un cliente nuevo
-  public function insertCliente($request){
+                                      //*******TABLA Menu**********
+  //funcion parainsertar un Producto nuevo
+  public function insertaProducto($request){
     $req = json_decode($request->getbody());
-    $sql = "INSERT INTO Clientes(Nombre,Apellido,Email,Telefono,Direccion) VALUES(:Nombre,:Apellido,:Email,:Telefono,:Direccion)";
+    $sql = "INSERT INTO Menu(Nombre,Descripcion,Precio) VALUES(:Nombre,:Descripcion,:Precio)";
     $response=new stdClass();
       try {
         $statement = $this->con->prepare($sql);
         $statement->bindparam("Nombre", $req->Nombre);
-        $statement->bindparam("Apellido", $req->Apellido);
-        $statement->bindparam("Email", $req->Email);
-        $statement->bindparam("Telefono", $req->Telefono);
-        $statement->bindparam("Direccion", $req->Direccion);
+        $statement->bindparam("Descripcion", $req->Descripcion);
+        $statement->bindparam("Precio", $req->Precio);
+        
         $statement->execute();
         $response=$req;
       } catch (Exception $e) {
@@ -36,16 +35,16 @@ class Restaurante
 
     return json_encode($response);
   }
-  //Funcion para consultar a un cliente por su id
-  public function getClienteData($request)
+  //Funcion para consultar un Producto por su id
+  public function ConsultaProducto($request)
   {
     $req = json_decode($request->getbody());
 
-    $sql = "SELECT * FROM Clientes WHERE idCliente=:idCliente";
+    $sql = "SELECT * FROM Menu WHERE idProducto=:idProducto";
     $response=new stdClass();
       try {
         $statement = $this->con->prepare($sql);
-        $statement->bindparam("idCliente", $req->idCliente);      
+        $statement->bindparam("idProducto", $req->idProducto);      
         $statement->execute();        
         $response->result=$statement->fetchall(PDO::FETCH_OBJ);
       } catch (Exception $e) {
@@ -54,17 +53,17 @@ class Restaurante
 
     return json_encode($response);
   }
-  //Funcion para eliminar a un cliente
-  public function eliminarCliente($request)
+  //Funcion para eliminar un Producto
+  public function eliminaProducto($request)
   {
     $req = json_decode($request->getbody());
 
    
-      $sql = "DELETE  FROM Clientes where idCliente=:idCliente";
+      $sql = "DELETE  FROM Menu where idProducto=:idProducto";
     $response=new stdClass();
       try {
         $statement = $this->con->prepare($sql);
-        $statement->bindparam("idCliente", $req->idCliente); 
+        $statement->bindparam("idProducto", $req->idProducto); 
         $statement->execute();
         $response->Datos_Eliminados =$req;
       } catch (Exception $e) {
@@ -75,21 +74,19 @@ class Restaurante
 
   }
 
-   //Funcion para modificar algun cliente
- public function modificarCliente($request)
+   //Funcion para modificar algun Producto
+ public function modificarProducto($request)
   {
     $req = json_decode($request->getbody());
 
-     $sql = "UPDATE Clientes  SET Nombre=:Nombre, Apellido=:Apellido, Email=:Email, Telefono=:Telefono, Direccion=:Direccion WHERE idCliente=:idCliente";
+     $sql = "UPDATE Menu  SET Nombre=:Nombre, Descripcion=:Descripcion, Precio=:Precio WHERE idProducto=:idProducto";
     $response=new stdClass();
       try {
         $statement = $this->con->prepare($sql);
-        $statement->bindparam("idCliente", $req->idCliente);
+        $statement->bindparam("idProducto", $req->idProducto);
         $statement->bindparam("Nombre", $req->Nombre);
-        $statement->bindparam("Apellido", $req->Apellido);
-        $statement->bindparam("Email", $req->Email);
-        $statement->bindparam("Telefono", $req->Telefono);
-        $statement->bindparam("Direccion", $req->Direccion);
+        $statement->bindparam("Descripcion", $req->Descripcion);
+        $statement->bindparam("Precio", $req->Precio);
          
         $statement->execute();
         $response=$req;
@@ -106,7 +103,3 @@ class Restaurante
 
 
 }
-
-                                      
-
-  
