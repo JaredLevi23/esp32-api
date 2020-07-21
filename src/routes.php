@@ -26,4 +26,7 @@ $app->group('/api', function () use ($app) {
     $app->get('/sensores','funciongetSensoreData');
    $app->delete('/sensores','funcionEliminarSensor');
     $app->patch('/sensores','funcionmodificarSensor');
+
+    //FuncionesRestaurante
+    $app->post('/restaurante','funcionInsertCliente');
 });
