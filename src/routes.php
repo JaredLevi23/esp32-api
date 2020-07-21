@@ -19,13 +19,7 @@ $app->get('/[{name}]', function (Request $request, Response $response, array $ar
 // API group
 $app->group('/api', function () use ($app) {
    
-    //REGISTROUSUARIOS
-    $app->post('/rutacalculadora','funcionCalculadora');
-
-    $app->post('/sensores','funcionsensores');
-    $app->get('/sensores','funciongetSensoreData');
-   $app->delete('/sensores','funcionEliminarSensor');
-    $app->patch('/sensores','funcionmodificarSensor');
+   
 
     //FuncionesRestaurante
     $app->post('/restaurante','funcionInsertCliente');
