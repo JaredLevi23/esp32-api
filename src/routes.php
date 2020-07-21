@@ -39,4 +39,10 @@ $app->group('/api', function () use ($app) {
     $app->get('/trabajador','funcionConsultaTrabajador');
     $app->delete('/trabajador','funcionIeliminaTrabajador');
     $app->patch('/trabajador','funcionmodificarTrabajador');
+
+    //Funciones Reservacion
+    $app->post('/reservacion','funcionInsertaReservacion');
+    $app->get('/reservacion','funcionConsultaReservacion');
+    $app->delete('/reservacion','funcionIeliminaReservacion');
+    $app->patch('/reservacion','funcionmodificarReservacion');
 });

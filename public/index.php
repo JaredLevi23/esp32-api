@@ -44,6 +44,7 @@ require_once __DIR__ . '/../includes/DbConnect.php';
 include 'funciones/restaurante.php';
 include 'funciones/menu.php';
 include 'funciones/trabajador.php';
+include 'funciones/reservacion.php';
 // Run app
 $app->run();
 

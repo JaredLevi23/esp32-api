@@ -15,7 +15,7 @@ class Trabajador
   }
 
 
-                                      //*******TABLA Menu**********
+                                      //*******TABLA Trabjador**********
   //funcion parainsertar un Trabajador nuevo
   public function insertaTrabajador($request){
     $req = json_decode($request->getbody());
@@ -79,7 +79,7 @@ class Trabajador
   }
 
 
-   //Funcion para modificar algun Producto
+   //Funcion para modificar algun Trabajador
  public function modificarTrabajador($request)
   {
     $req = json_decode($request->getbody());
